@@ -9,14 +9,14 @@ import Grid from '@mui/material/Grid';
 
 export const PostList = () => {
     return (
-        <Grid container spacing={1}>
-            <Grid item>
+        <Grid container spacing={1} alignItems='center' alignContent='center'>
+            <Grid item xs={12}>
                 <PostCard />
             </Grid>
-            <Grid item>
+            <Grid item xs={12}>
                 <PostCard />
             </Grid>
-            <Grid item>
+            <Grid item xs={12}>
                 <PostCard />
             </Grid>
         </Grid>

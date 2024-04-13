@@ -45,24 +45,21 @@ export const PostCard = (props) => {
                 </StyledAvatar>
                 }
                 title={
-                    <Grid container alignItems="center">
-                    <Typography variant="h6" style={{ marginLeft: '8px' }}>Title of the post Esus</Typography>
+                    <Grid container alignItems="flex-start" flexDirection='column' >
+                        <Typography variant="h6" >Title of the post Esus</Typography>
                     </Grid>
                 }
-                subheader="September 14, 2016"
                 />
                 <CardMedia 
                 component='img'
                 height="300"
                 image='https://preview.redd.it/the-forgotten-cat-meme-v0-ux74bsifrpda1.jpg?width=640&crop=smart&auto=webp&s=19a5e9603a5d27c8f2c6b74b709118e219808d36' title="test pic"/>
-                <CardContent>
-                    <Typography variant='body1'>Content of the post meow meow</Typography>
-                </CardContent>
-                <ChatButtonWrapper disableSpacing>
+                <CardContent style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <Typography variant='subtitle1'>Posted in September 14, 2016</Typography>
                     <IconButton onClick={handleExpandClick}> <ChatBubbleOutline /></IconButton>
-                </ChatButtonWrapper>
+                </CardContent>
                 <Collapse in={expanded} timeout="auto">
-                    <Typography paragraph>If you see me, you're fucking great it this!</Typography>
+                    <Typography paragraph>If you see me, you're great at this!</Typography>
                 </Collapse>
             </Card>
         </Grid>

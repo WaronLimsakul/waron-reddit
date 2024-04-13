@@ -6,7 +6,7 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
-import MenuIcon from '@mui/icons-material/Menu';
+import RedditIcon from '@mui/icons-material/Reddit';
 import SearchIcon from '@mui/icons-material/Search';
 import { useState } from 'react';
 
@@ -68,7 +68,7 @@ export default function SearchAppBar() {
               aria-label="open drawer"
               sx={{ mr: 2 }}
             >
-              <MenuIcon />
+              <RedditIcon />
             </IconButton>
             <Typography
               variant="h6"
