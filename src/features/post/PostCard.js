@@ -52,7 +52,7 @@ export const PostCard = ({ post }) => {
         {post.videoUrl && (
           <CardMedia
             component="video"
-            height="200"
+            height="auto"
             autoPlay
             controls
             src={post.videoUrl}

@@ -12,7 +12,7 @@ export const kFormatter = (num) => {
 
 export const fetchPosts = createAsyncThunk("reddit/fetchPosts", async () => {
   try {
-    const response = await fetch("https://www.reddit.com/r/picture.json");
+    const response = await fetch("https://www.reddit.com/r/LeagueofLegends.json");
     const jsonResponse = await response.json();
     const postsArray = jsonResponse.data.children;
     const posts = postsArray.map((item) => {

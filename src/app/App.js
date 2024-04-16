@@ -24,16 +24,16 @@ function App() {
           <Grid item xs={12}>
             <Header />
           </Grid>
-          <Grid item xs={false} sm={1} md={2} lg={3}> 
+          <Grid item xs={false} sm={1} md={1} lg={1}> 
           </Grid>
-          <Grid item xs={8} sm={7} md={6} lg={5} align="center">
+          <Grid item xs={7} sm={7} md={8} lg={8} align="center">
             <Routes>
               <Route path='/' element={<PostList />}></Route>
               <Route path='/pet' element={<Pet />}></Route>
               <Route path='/food' element={<Food />}></Route>
             </Routes>
           </Grid>
-          <Grid item xs={4} sm={3} md={3} lg={2} align="center">
+          <Grid item xs={3} sm={3} md={3} lg={2} align="center">
               <CategoriesList />
           </Grid>
         </Grid>
