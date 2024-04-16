@@ -22,7 +22,7 @@ export const CategoriesList = () => {
         <Paper elevation={1}>
             <Grid container spacing={1} flexDirection='column'>
                 <Grid item>
-                    <Typography variant="h4">subreddits</Typography>
+                    <Typography variant="h5">Subreddits</Typography>
                 </Grid>
                 <Grid>
                     <Card>
