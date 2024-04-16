@@ -12,7 +12,7 @@ import Grid from "@mui/material/Grid";
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { TimeAgo } from "./TimeAgo";
-import RedditIcon from '@mui/icons-material/Reddit';
+import RedditIcon from "@mui/icons-material/Reddit";
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
   marginRight: theme.spacing(1),
@@ -36,12 +36,15 @@ export const PostCard = ({ post }) => {
       <Card>
         <CardHeader
           avatar={
-            <StyledAvatar alt="profile picture" src="https://cdn-icons-png.flaticon.com/512/1383/1383267.png" >
+            <StyledAvatar
+              alt="profile picture"
+              src="https://cdn-icons-png.flaticon.com/512/1383/1383267.png"
+            >
               {post && post.author}
             </StyledAvatar>
           }
           title={
-            <Grid container alignItems="flex-start" flexDirection="column">
+            <Grid container alignItems="flex-start">
               <Typography variant="h6">{post.title}</Typography>
             </Grid>
           }
@@ -52,16 +55,18 @@ export const PostCard = ({ post }) => {
             height="200"
             autoPlay
             controls
-            src={ post.videoUrl }
-            title='title'
+            src={post.videoUrl}
+            title="title"
           />
         )}
-        { post.url && (
+        {post.url ? (
+          <CardMedia component="img" height="auto" src={post.url} title="" />
+        ) : (
           <CardMedia
             component="img"
             height="auto"
-            src={post.url}
-            title=''
+            src={post.thumbnailUrl}
+            title=""
           />
         )}
         <CardContent
@@ -71,15 +76,13 @@ export const PostCard = ({ post }) => {
             alignItems: "center",
           }}
         >
-          <Typography variant="subtitle1">
-            Posted by {post.author} 
-          </Typography>
+          <Typography variant="subtitle1">Posted by {post.author}</Typography>
           <Typography variant="subtitle2">
-            <TimeAgo timestamp={post.created_utc}/>
+            <TimeAgo timestamp={post.created_utc} />
           </Typography>
           <IconButton onClick={handleExpandClick}>
             {" "}
-            <ChatBubbleOutline style={{marginRight:'3'}}/> 
+            <ChatBubbleOutline style={{ marginRight: "3" }} />
             <Typography variant="subtitle2">{post.numComments}</Typography>
           </IconButton>
         </CardContent>
