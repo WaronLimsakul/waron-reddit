@@ -20,7 +20,7 @@ function App() {
     <Router>
     <div className='App'>
       <Paper elevation={2}>
-        <Grid container spacing={2}>  
+        <Grid container spacing={3}>  
           <Grid item xs={12}>
             <Header />
           </Grid>

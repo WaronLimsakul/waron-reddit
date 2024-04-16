@@ -28,8 +28,8 @@ export const PostList = () => {
 
   return (
     <Grid container spacing={2} alignItems="center" alignContent="center">
-      <Grid container xs={12} spacing={2} style={{marginTop:'10'}}>
-        {postsIsLoading && <CircularProgress />}
+      <Grid container xs={12} spacing={2} >
+        {postsIsLoading && <Grid item xs={12} style={{textAlign: 'center'}}><CircularProgress size={60}/></Grid>}
         {posts.map((post) => <Grid item xs={12}><PostCard post={post}/></Grid>)}
       </Grid>
     </Grid>
