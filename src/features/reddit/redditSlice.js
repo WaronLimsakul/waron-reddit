@@ -25,7 +25,6 @@ export const fetchPosts = createAsyncThunk("reddit/fetchPosts", async () => {
         id: item.data.id,
         numComments: kFormatter(item.data.num_comments),
         created_utc: item.data.created_utc,
-        authorUrl: item.data.link_author,
       };
       if (item.data.is_video) {
         postData.videoUrl = item.data.media.reddit_video.fallback_url;
