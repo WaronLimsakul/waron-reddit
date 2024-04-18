@@ -11,14 +11,15 @@ import {
 import { useParams } from "react-router-dom";
 import { Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
-import Grid from "@mui/material/Grid";
+import Grid from "@mui/material/Grid"; 
 import { FailedCard } from "../category/FailedCard";
 
 export const PostList = () => {
   const dispatch = useDispatch();
-  const subreddit = useParams();
+  const { subreddit } = useParams();
+  
   useEffect(() => {
-    dispatch(fetchPosts());
+    dispatch(fetchPosts(subreddit));
   }, [subreddit]);
 
   const posts = useSelector(selectPosts);
@@ -28,7 +29,7 @@ export const PostList = () => {
 
   return (
     <Grid container spacing={2} alignItems="center" alignContent="center">
-      <Grid container xs={12} spacing={2} >
+      <Grid container spacing={2} >
         {postsIsLoading && <Grid item xs={12} style={{textAlign: 'center'}}><CircularProgress size={60}/></Grid>}
         {posts.map((post) => <Grid item xs={12}><PostCard post={post}/></Grid>)}
       </Grid>

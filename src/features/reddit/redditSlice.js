@@ -10,9 +10,9 @@ export const kFormatter = (num) => {
     : Math.sign(num) * Math.abs(num);
 };
 
-export const fetchPosts = createAsyncThunk("reddit/fetchPosts", async () => {
+export const fetchPosts = createAsyncThunk("reddit/fetchPosts", async (subreddit) => {
   try {
-    const response = await fetch("https://www.reddit.com/r/LeagueofLegends.json");
+    const response = await fetch(`https://www.reddit.com/r/${subreddit}.json`);
     const jsonResponse = await response.json();
     const postsArray = jsonResponse.data.children;
     const posts = postsArray.map((item) => {
