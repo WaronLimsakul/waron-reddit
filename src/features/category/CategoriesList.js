@@ -111,6 +111,9 @@ export const CategoriesList = () => {
             </CardActionArea>
           </Card>
         </Grid>
+        <Grid item>
+          
+        </Grid>
       </Grid>
     </Paper>
   );
