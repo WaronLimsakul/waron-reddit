@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
+import { styled, alpha, ThemeProvider, createTheme } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -51,6 +51,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       },
     },
   }));
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#2c387e',
+      },
+    },
+  });
   
 export default function SearchAppBar() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -58,6 +65,7 @@ export default function SearchAppBar() {
       setSearchTerm(e.target.value);
     } 
     return (
+      <ThemeProvider theme={theme}>
       <Box sx={{ flexGrow: 1 }}>
         <AppBar position="static">
           <Toolbar>
@@ -91,5 +99,6 @@ export default function SearchAppBar() {
           </Toolbar>
         </AppBar>
       </Box>
+      </ThemeProvider>
     );
   }
