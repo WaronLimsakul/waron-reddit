@@ -120,4 +120,5 @@ export const selectPostsLoadingStatus = (state) => state.reddit.isLoadingPosts;
 export const selectPostsFinalStatus = (state) => state.reddit.fetchPostsFailed;
 export const selectSearchTarget = (state) => state.reddit.searchTarget;
 export const selectDiscussions = (state) => state.reddit.discussions;
+export const selectDiscussionsLoadingStatus = (state) => state.reddit.isLoadingDicussions;
 export default redditSlice.reducer;

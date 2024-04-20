@@ -9,7 +9,7 @@ import Collapse from "@mui/material/Collapse";
 import { ChatBubbleOutline } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import { TimeAgo } from "./TimeAgo";
 import RedditIcon from "@mui/icons-material/Reddit";
