@@ -13,6 +13,11 @@ import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { TimeAgo } from "./TimeAgo";
 import RedditIcon from "@mui/icons-material/Reddit";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { Divider, Paper } from "@mui/material";
+import { DiscussionList } from "./DiscussionsList";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDiscussion, selectDiscussions } from "../reddit/redditSlice";
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
   marginRight: theme.spacing(1),
@@ -25,11 +30,14 @@ const ChatButtonWrapper = styled(CardActions)(({ theme }) => ({
 
 export const PostCard = ({ post }) => {
   const [expanded, setExpanded] = useState(false);
+  const dispatch = useDispatch();
+  const discussions = useSelector(selectDiscussions);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
+    dispatch(fetchDiscussion(`r/${post.subreddit}/${post.id}.json`));
+    console.log(discussions);
   };
-  console.log(post);
 
   return (
     <Grid>
@@ -53,7 +61,6 @@ export const PostCard = ({ post }) => {
           <CardMedia
             component="video"
             height="auto"
-            autoPlay
             controls
             src={post.videoUrl}
             title="title"
@@ -87,9 +94,7 @@ export const PostCard = ({ post }) => {
           </IconButton>
         </CardContent>
         <Collapse in={expanded} timeout="auto">
-          <Typography paragraph>
-            If you see me, you're great at this!
-          </Typography>
+          <DiscussionList discussions={discussions}/>
         </Collapse>
       </Card>
     </Grid>
