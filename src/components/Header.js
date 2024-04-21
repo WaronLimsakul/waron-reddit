@@ -17,6 +17,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchTargetUpdated } from "../features/reddit/redditSlice";
 
+const HeaderContainer = styled(Box)(({ theme }) => ({
+  position: "fixed",
+  width: "100%",
+  zIndex: theme.zIndex.appBar,
+}));
+
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
@@ -80,37 +86,42 @@ export default function SearchAppBar() {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
-          <Toolbar>
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              sx={{ mr: 2 }}
-            >
-              <RedditIcon />
-            </IconButton>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ flexGrow: 1 }}
-            >
-              Waron-Reddit
-            </Typography>
-            <Search>
-              <SearchIconWrapper>
-                <SearchIcon />
-              </SearchIconWrapper>
-              <StyledInputBase
-                placeholder="Search…"
-                inputProps={{ "aria-label": "search" }}
-                onChange={onSearchTermChanged}
-              />
-            </Search>
-          </Toolbar>
-        </AppBar>
+        <HeaderContainer>
+          <AppBar position="static">
+            <Toolbar>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                sx={{ mr: 2 }}
+                onClick={() => {
+                  window.scrollTo({top: 0, behavior:'smooth'});
+                }}
+              >
+                <RedditIcon fontSize="large"/>
+              </IconButton>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ flexGrow: 1 }}
+              >
+                Waron-Reddit
+              </Typography>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ "aria-label": "search" }}
+                  onChange={onSearchTermChanged}
+                />
+              </Search>
+            </Toolbar>
+          </AppBar>
+        </HeaderContainer>
       </Box>
     </ThemeProvider>
   );

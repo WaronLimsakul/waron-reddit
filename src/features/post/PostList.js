@@ -12,14 +12,14 @@ import {
 import { useParams } from "react-router-dom";
 import { Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
-import Grid from "@mui/material/Grid"; 
-import { FailedCard } from "../category/FailedCard";
+import Grid from "@mui/material/Grid";
+import { styled, Box } from "@mui/material";
 
 export const PostList = () => {
   const dispatch = useDispatch();
   const { subreddit } = useParams();
   const searchTerm = useSelector(selectSearchTarget);
-  
+
   useEffect(() => {
     dispatch(fetchPosts(subreddit));
   }, [subreddit]);
@@ -33,11 +33,27 @@ export const PostList = () => {
     post.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const PageContent = styled(Box)(({ theme }) => ({
+    paddingTop: theme.spacing(8), // Adjust the padding to create space for the header
+  }));
+
   return (
-    <Grid container spacing={2} alignItems="center" alignContent="center">
-      <Grid container spacing={2} >
-        {postsIsLoading ? <Grid item xs={12} style={{textAlign: 'center'}}><CircularProgress size={60}/></Grid> : filteredPosts.map((post) => <Grid item xs={12}><PostCard post={post}/></Grid>)}
+    <PageContent>
+      <Grid container spacing={2} alignItems="center" alignContent="center">
+        <Grid container spacing={2}>
+          {postsIsLoading ? (
+            <Grid item xs={12} style={{ textAlign: "center" }}>
+              <CircularProgress size={60} />
+            </Grid>
+          ) : (
+            filteredPosts.map((post) => (
+              <Grid item xs={12}>
+                <PostCard post={post} />
+              </Grid>
+            ))
+          )}
+        </Grid>
       </Grid>
-    </Grid>
+    </PageContent>
   );
 };
