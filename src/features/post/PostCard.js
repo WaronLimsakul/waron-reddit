@@ -18,6 +18,7 @@ import { Divider, Paper } from "@mui/material";
 import { DiscussionList } from "./DiscussionsList";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDiscussion, selectDiscussions } from "../reddit/redditSlice";
+import ImportExportIcon from "@mui/icons-material/ImportExport";
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
   marginRight: theme.spacing(1),
@@ -52,8 +53,10 @@ export const PostCard = ({ post }) => {
             </StyledAvatar>
           }
           title={
-            <Grid container alignItems="flex-start">
-              <Typography variant="h6">{post.title}</Typography>
+            <Grid container justifyContent="space-between">
+              <Typography variant="h6" textAlign="left">
+                {post.title}
+              </Typography>
             </Grid>
           }
         />
@@ -83,6 +86,11 @@ export const PostCard = ({ post }) => {
             alignItems: "center",
           }}
         >
+          <Grid display="flex">
+            <ImportExportIcon />
+            <Typography variant="subtitle2">{post.ups}</Typography>
+          </Grid>
+
           <Typography variant="subtitle1">Posted by {post.author}</Typography>
           <Typography variant="subtitle2">
             <TimeAgo timestamp={post.created_utc} />
@@ -94,7 +102,7 @@ export const PostCard = ({ post }) => {
           </IconButton>
         </CardContent>
         <Collapse in={expanded} timeout="auto">
-          <DiscussionList discussions={discussions}/>
+          <DiscussionList discussions={discussions} />
         </Collapse>
       </Card>
     </Grid>

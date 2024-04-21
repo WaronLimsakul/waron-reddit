@@ -30,6 +30,7 @@ export const fetchPosts = createAsyncThunk(
           numComments: kFormatter(item.data.num_comments),
           created_utc: item.data.created_utc,
           subreddit: item.data.subreddit,
+          ups: kFormatter(item.data.ups),
         };
         if (item.data.is_video) {
           postData.videoUrl = item.data.media.reddit_video.fallback_url;
