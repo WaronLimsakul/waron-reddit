@@ -24,10 +24,10 @@ export const DiscussionList = ({ discussions }) => {
       {discussionsIsLoading ? (
         <>
           <LinearProgress />
-          <br></br>
+          {/* <br></br>
           <LinearProgress />
           <br></br>
-          <LinearProgress />
+          <LinearProgress /> */}
         </>
       ) : (
         discussions.map((discussion) => <Discussion discussion={discussion} />)
