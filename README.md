@@ -5,10 +5,10 @@ This project is only-read applcation implementing reddit's JSON API.
 ## Wireframes
 - The application will mainly shows the posts fetched from Reddit API.
 - The header consists of logo and search bar.
-- The side bar has available subreddit to choose.
+- The side bar has available subreddit to be choosen.
 
 ## Technologies used
-Mainly using react (react-dom, router) and redux for the application and Jest, Enzyme for testing. Aiming to be hosted in Git Hub and published in Netlify.
+Mainly using react (react-dom, router) and redux for the application. Aiming to be hosted in Git Hub and published in Netlify.
 
 ## Features
 - User can fetch posts from reddit server and see body and comments of the post.
@@ -16,4 +16,5 @@ Mainly using react (react-dom, router) and redux for the application and Jest, E
 - User can change the availabe subreddit (topic) on the side bar.
 
 ## Future work
-Voting
+- Styling color
+- Testing with Jest or Enzyme
