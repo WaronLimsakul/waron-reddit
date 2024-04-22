@@ -32,13 +32,20 @@ const ChatButtonWrapper = styled(CardActions)(({ theme }) => ({
 export const PostCard = ({ post }) => {
   const [expanded, setExpanded] = useState(false);
   const dispatch = useDispatch();
-  const discussions = useSelector(selectDiscussions);
 
   const handleExpandClick = () => {
+    if (!expanded) {
+      dispatch(fetchDiscussion({ subreddit: post.subreddit, id: post.id }));
+    };
     setExpanded(!expanded);
-    dispatch(fetchDiscussion(`r/${post.subreddit}/${post.id}.json`));
-    console.log(discussions);
   };
+
+  const discussions = useSelector(selectDiscussions);
+  const selectedDiscussions = discussions[post.id];
+  console.log(discussions);
+  console.log(selectedDiscussions);
+  console.log(post.id);
+
 
   return (
     <Grid>
@@ -102,7 +109,7 @@ export const PostCard = ({ post }) => {
           </IconButton>
         </CardContent>
         <Collapse in={expanded} timeout="auto">
-          <DiscussionList discussions={discussions} />
+          <DiscussionList discussions={selectedDiscussions} />
         </Collapse>
       </Card>
     </Grid>

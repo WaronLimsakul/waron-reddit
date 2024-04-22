@@ -8,6 +8,7 @@ import {
   searchTargetUpdated,
   selectPostsFinalStatus,
   selectSearchTarget,
+  clearDiscussions,
 } from "../reddit/redditSlice";
 import { useParams } from "react-router-dom";
 import { Typography } from "@mui/material";
@@ -22,6 +23,7 @@ export const PostList = () => {
 
   useEffect(() => {
     dispatch(fetchPosts(subreddit));
+    dispatch(clearDiscussions());
   }, [subreddit]);
 
   const posts = useSelector(selectPosts);

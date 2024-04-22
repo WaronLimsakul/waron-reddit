@@ -21,16 +21,12 @@ export const DiscussionList = ({ discussions }) => {
   const discussionsIsLoading = useSelector(selectDiscussionsLoadingStatus);
   return (
     <Paper>
-      {discussionsIsLoading ? (
+      {(!discussions && discussionsIsLoading) ? (
         <>
           <LinearProgress />
-          {/* <br></br>
-          <LinearProgress />
-          <br></br>
-          <LinearProgress /> */}
         </>
-      ) : (
-        discussions.map((discussion) => <Discussion discussion={discussion} />)
+      ) : ( 
+        discussions && discussions.map((discussion) => <Discussion discussion={discussion} />)
       )}
     </Paper>
   );

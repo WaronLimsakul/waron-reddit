@@ -46,13 +46,14 @@ export const fetchPosts = createAsyncThunk(
 
 export const fetchDiscussion = createAsyncThunk(
   "reddit/fetchDiscussion",
-  async (discussionPath) => {
+  async ({ subreddit, id }) => {
     try {
-      const response = await fetch(`https://www.reddit.com/${discussionPath}`);
+      const response = await fetch(`https://www.reddit.com/r/${subreddit}/${id}.json`);
       const jsonResponse = await response.json();
       const discussionsArray = jsonResponse[1].data.children;
       const discussions = discussionsArray.slice(0 ,10).map((item) => {
         return {
+          postId : id,
           author: item.data.author,
           body: item.data.body,
           id: item.data.id,
@@ -77,12 +78,15 @@ export const redditSlice = createSlice({
     isLoadingDicussions: false,
     searchTarget: "posts",
     posts: [],
-    discussions: [],
+    discussions: {},
   },
   reducers: {
     searchTargetUpdated: (state, action) => {
       state.searchTarget = action.payload;
     },
+    clearDiscussions: (state) => {
+      state.discussions = {}; 
+    }
   },
   extraReducers(builder) {
     builder
@@ -106,7 +110,7 @@ export const redditSlice = createSlice({
       .addCase(fetchDiscussion.fulfilled, (state, action) => {
         state.isLoadingDicussions = false;
         state.fetchDiscussionFailed = false;
-        state.discussions = action.payload;
+        state.discussions[action.payload[0].postId] = action.payload;
       })
       .addCase(fetchDiscussion.rejected, (state) => {
         state.isLoadingDicussions = false;
@@ -115,7 +119,7 @@ export const redditSlice = createSlice({
   },
 });
 
-export const { searchTargetUpdated } = redditSlice.actions;
+export const { searchTargetUpdated, clearDiscussions } = redditSlice.actions;
 export const selectPosts = (state) => state.reddit.posts;
 export const selectPostsLoadingStatus = (state) => state.reddit.isLoadingPosts;
 export const selectPostsFinalStatus = (state) => state.reddit.fetchPostsFailed;
