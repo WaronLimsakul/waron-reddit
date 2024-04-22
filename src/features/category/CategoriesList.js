@@ -88,8 +88,7 @@ export const CategoriesList = () => {
                 onClick={() => handleCardClick("pics")}
               >
                 <CardContent>
-                  <CollectionsIcon fontSize="large" />
-                  {/* <Typography variant="paragraph"> Pictures</Typography> */}
+                  <CollectionsIcon fontSize="large" />{" "}
                 </CardContent>
               </CardActionArea>
             </Card>
