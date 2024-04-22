@@ -63,12 +63,14 @@ export const PostCard = ({ post }) => {
             title="title"
           />
         )}
-        <CardMedia
-          component="img"
-          height="auto"
-          src={post.url || post.thumbnailUrl}
-          title=""
-        />
+        {post.url || post.thumbnailUrl ? (
+          <CardMedia
+            component="img"
+            height="auto"
+            src={post.url || post.thumbnailUrl}
+            title=""
+          />
+        ) : null}
         <CardContent
           style={{
             display: "flex",
