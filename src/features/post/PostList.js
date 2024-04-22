@@ -21,7 +21,7 @@ export const PostList = () => {
   useEffect(() => {
     dispatch(fetchPosts(subreddit));
     dispatch(clearDiscussions());
-  }, [subreddit]);
+  }, [subreddit, dispatch]);
 
   const posts = useSelector(selectPosts);
   const postsIsLoading = useSelector(selectPostsLoadingStatus);
