@@ -73,15 +73,18 @@ const theme = createTheme({
 });
 
 export default function SearchAppBar() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const onSearchTermChanged = (e) => {
-    setSearchTerm(e.target.value);
-  };
+  const [searchTerm, setSearchTerm] = useState(null);
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(searchTargetUpdated(searchTerm));
-  }, [searchTerm]);
+  
+  const onSearchTermChanged = (e) => {
+    setSearchTerm(e.target.value); 
+  };
+  
+  const onSubmitSearchTerm = (e) => {
+    if (e.key === "Enter") {
+      dispatch(searchTargetUpdated(searchTerm));
+    }
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -96,10 +99,10 @@ export default function SearchAppBar() {
                 aria-label="open drawer"
                 sx={{ mr: 2 }}
                 onClick={() => {
-                  window.scrollTo({top: 0, behavior:'smooth'});
+                  window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
               >
-                <RedditIcon fontSize="large"/>
+                <RedditIcon fontSize="large" />
               </IconButton>
               <Typography
                 variant="h6"
@@ -117,6 +120,7 @@ export default function SearchAppBar() {
                   placeholder="Search…"
                   inputProps={{ "aria-label": "search" }}
                   onChange={onSearchTermChanged}
+                  onKeyDown={onSubmitSearchTerm}
                 />
               </Search>
             </Toolbar>

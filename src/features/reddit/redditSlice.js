@@ -76,7 +76,7 @@ export const redditSlice = createSlice({
     isLoadingPosts: false,
     fetchDiscussionFailed: false,
     isLoadingDicussions: false,
-    searchTarget: "posts",
+    searchTarget: "",
     posts: [],
     discussions: {},
   },
