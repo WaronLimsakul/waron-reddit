@@ -54,6 +54,7 @@ export const PostCard = ({ post }) => {
             </Grid>
           }
         />
+        {console.log("post.url:", post.url, "post.thumbnailUrl:", post.thumbnailUrl)}
         {post.videoUrl && (
           <CardMedia
             component="video"
@@ -63,7 +64,7 @@ export const PostCard = ({ post }) => {
             title="title"
           />
         )}
-        {post.url || post.thumbnailUrl ? (
+        {post.post_hint === 'image' ? (
           <CardMedia
             component="img"
             height="auto"
