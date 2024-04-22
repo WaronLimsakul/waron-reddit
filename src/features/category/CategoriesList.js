@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
 import PetsIcon from "@mui/icons-material/Pets";
 import FastfoodIcon from "@mui/icons-material/Fastfood";
 import SportsBasketballIcon from "@mui/icons-material/SportsBasketball";
@@ -15,7 +14,6 @@ import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
-import { SportsBasketball } from "@mui/icons-material";
 import { styled, Box } from "@mui/material";
 
 export const CategoriesList = () => {

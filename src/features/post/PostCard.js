@@ -1,7 +1,6 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
-import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
 import IconButton from "@mui/material/IconButton";
@@ -9,12 +8,9 @@ import Collapse from "@mui/material/Collapse";
 import { ChatBubbleOutline } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import Grid from "@mui/material/Grid";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import { TimeAgo } from "./TimeAgo";
-import RedditIcon from "@mui/icons-material/Reddit";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { Divider, Paper } from "@mui/material";
 import { DiscussionList } from "./DiscussionsList";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDiscussion, selectDiscussions } from "../reddit/redditSlice";
@@ -22,11 +18,6 @@ import ImportExportIcon from "@mui/icons-material/ImportExport";
 
 const StyledAvatar = styled(Avatar)(({ theme }) => ({
   marginRight: theme.spacing(1),
-}));
-
-const ChatButtonWrapper = styled(CardActions)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
 }));
 
 export const PostCard = ({ post }) => {
@@ -42,9 +33,6 @@ export const PostCard = ({ post }) => {
 
   const discussions = useSelector(selectDiscussions);
   const selectedDiscussions = discussions[post.id];
-  console.log(discussions);
-  console.log(selectedDiscussions);
-  console.log(post.id);
 
 
   return (

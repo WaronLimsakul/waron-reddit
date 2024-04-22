@@ -1,17 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { PostCard } from "./PostCard";
 import { useSelector, useDispatch } from "react-redux";
 import {
   selectPosts,
   fetchPosts,
   selectPostsLoadingStatus,
-  searchTargetUpdated,
-  selectPostsFinalStatus,
   selectSearchTarget,
   clearDiscussions,
 } from "../reddit/redditSlice";
 import { useParams } from "react-router-dom";
-import { Typography } from "@mui/material";
 import CircularProgress from "@mui/material/CircularProgress";
 import Grid from "@mui/material/Grid";
 import { styled, Box } from "@mui/material";
@@ -28,8 +25,6 @@ export const PostList = () => {
 
   const posts = useSelector(selectPosts);
   const postsIsLoading = useSelector(selectPostsLoadingStatus);
-  const fetchPostsFailed = useSelector(selectPostsFinalStatus);
-  console.log(posts);
 
   const filteredPosts = posts.filter((post) =>
     post.title.toLowerCase().includes(searchTerm.toLowerCase())

@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-const axios = require("axios");
 
 export const kFormatter = (num) => {
   if (isNaN(num)) {
