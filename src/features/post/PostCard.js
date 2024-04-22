@@ -27,13 +27,12 @@ export const PostCard = ({ post }) => {
   const handleExpandClick = () => {
     if (!expanded) {
       dispatch(fetchDiscussion({ subreddit: post.subreddit, id: post.id }));
-    };
+    }
     setExpanded(!expanded);
   };
 
   const discussions = useSelector(selectDiscussions);
   const selectedDiscussions = discussions[post.id];
-
 
   return (
     <Grid>
@@ -64,16 +63,12 @@ export const PostCard = ({ post }) => {
             title="title"
           />
         )}
-        {post.url ? (
-          <CardMedia component="img" height="auto" src={post.url} title="" />
-        ) : (
-          <CardMedia
-            component="img"
-            height="auto"
-            src={post.thumbnailUrl}
-            title=""
-          />
-        )}
+        <CardMedia
+          component="img"
+          height="auto"
+          src={post.url || post.thumbnailUrl}
+          title=""
+        />
         <CardContent
           style={{
             display: "flex",
