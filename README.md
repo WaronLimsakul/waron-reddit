@@ -18,3 +18,7 @@ Mainly using react (react-dom, router) and redux for the application. Aiming to 
 ## Future work
 - Styling color
 - Testing with Jest or Enzyme
+
+## Publish by Netlify
+- The link: https://waronreddit.netlify.app/
+
